@@ -1,3 +1,4 @@
+const category = require('../models/category');
 const { Category } = require('../models/index');
 
 
@@ -58,7 +59,16 @@ const CategoryController = {
             console.error(err);
             res.status(500).send({ msg: 'Error interno del servidor', err });
         }
-    }
+    },
+    async getById(req,res) {
+      try {
+        const category = await Category.findByPk(req.params.id)
+        res.send({msg:'Categoría encontrada por su id', category})
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    
 }
 
 module.exports = CategoryController;
