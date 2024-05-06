@@ -79,6 +79,22 @@ async getProductByName(req, res) {
   }
 },
 
+async getProductsByPrice(req, res) {
+  try {
+    const products = await Product.findAll({
+      where: {
+        price: {
+          [Op.like]: req.params.price,
+        },
+      },
+    });
+    res.send({ msg: `Precio del producto ${req.params.price} Encontrado`, products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+},
+
 }
   
 

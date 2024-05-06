@@ -1,6 +1,5 @@
-const category = require('../models/category');
-const { Category } = require('../models/index');
-
+const { Category, Sequelize } = require('../models/index');
+const { Op } = Sequelize;
 
 const CategoryController = {
     async insert(req, res) {
@@ -68,7 +67,25 @@ const CategoryController = {
         console.error(error);
       }
     },
+
+    async getCategoryByName(req, res) {
+      try {
+        const Category = await Category.findOne({
+          where: {
+            name: {
+              [Op.like]: `%${req.params.name}%`,
+            },
+          },
+        });
+        res.send({ msg: `Nombre de la categoría = ${req.params.name} Encontrado.` });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send(error);
+      }
+    },
     
-}
+    }
+    
+
 
 module.exports = CategoryController;
