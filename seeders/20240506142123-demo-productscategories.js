@@ -1,50 +1,70 @@
 'use strict';
 
-
 module.exports = {
   async up (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert ( 'Categories',
+    return queryInterface.bulkInsert ( 'ProductsCategories',
     [
-      { name: "Nike",
+      {
+      ProductId: 1,
+      CategoryId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
       },
-      { name: "Adidas", 
+      {
+      ProductId: 2,
+      CategoryId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Vans",
+      },
+      {
+      ProductId: 3,
+      CategoryId: 3,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Converse",
+      },
+      {
+      ProductId: 4,
+      CategoryId: 4,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Puma",
+      },
+      {
+      ProductId: 5,
+      CategoryId: 5,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Reebok",
+      },
+      {
+      ProductId: 6,
+      CategoryId: 6,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "New Balance",
+      },
+      {
+      ProductId: 7,
+      CategoryId: 7,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Under Armour",
+      },
+      {
+      ProductId: 8,
+      CategoryId: 8,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Timberland",
+      },
+      {
+      ProductId: 9,
+      CategoryId: 9,
       createdAt: new Date(),
       updatedAt: new Date()
-       },
-      { name: "Dr. Martens",
+      },
+      {
+      ProductId: 10,
+      CategoryId: 10,
       createdAt: new Date(),
       updatedAt: new Date()
-       }
+      },
+      
     ]
   )},
 
