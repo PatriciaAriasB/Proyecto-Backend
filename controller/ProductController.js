@@ -1,4 +1,6 @@
-const { Product } = require("../models/index");
+const { Product, Category, ProductCategory, Sequelize } = require('../models/index');
+const { Op } = Sequelize;
+
 
 const ProductController = {
   async create(req, res) {
@@ -10,7 +12,74 @@ const ProductController = {
       console.error(error);
       res.status(500).send(error);
     }
-  }}
+  },
+     async getAll(req, res) {
+    try {
+        const categories = await Product.findAll();
+        res.send(categories);
+    } catch (err) {
+        console.error(err);
+    }
+    
+},
+
+
+async update(req, res) {
+    try {
+      await Product.update(req.body,
+        {
+          where: {
+            id: req.params.id,
+          },
+        }
+      );
+      res.send("Producto actualizado con éxito");
+    } catch (err) {
+      console.error(err);
+      res.status(500).send({ msg: 'Error interno del servidor', err });
+    }
+  },
+async delete(req, res) {
+    try {
+        await Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        res.send({ message: 'Producto eliminado con éxito'})
+    }
+     catch (error) {
+        console.error(err);
+        res.status(500).send({ msg: 'Error interno del servidor', err });
+    }
+},
+
+async getById(req,res) {
+  try {
+    const product = await Product.findByPk(req.params.id)
+    res.send({msg:'Producto encontrado por su id', product})
+  } catch (error) {
+    console.error(error);
+  }
+},
+
+async getProductByName(req, res) {
+  try {
+    const product = await Product.findOne({
+      where: {
+        name: {
+          [Op.like]: `%${req.params.name}%`,
+        },
+      },
+    });
+    res.send({ msg: `Nombre de producto = ${req.params.name} Encontrado.` });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+},
+
+}
   
 
 

@@ -34,6 +34,17 @@ const CategoryController = {
           res.status(500).send({ msg: 'Error interno del servidor', err });
         }
       },
+      async getOneById(req, res) {
+        try {
+          const category = await Category.findOne({
+            where: {id: req.params.id}
+          });
+          res.send({msg: `Categoría con ID: ${req.params.id} es: ${category.category}`, category});
+        } catch (error) {
+          console.error(error);
+          res.status(500).send(error);
+        }
+      },
     async delete(req, res) {
         try {
             await Category.destroy({
