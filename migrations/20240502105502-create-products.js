@@ -11,6 +11,7 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING
+        
       },
       price: {
         type: Sequelize.DECIMAL

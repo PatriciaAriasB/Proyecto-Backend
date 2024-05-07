@@ -13,7 +13,9 @@ const CategoryController = {
     },
     async getAll(req, res) {
         try {
-            const categories = await Category.findAll();
+            const categories = await Category.findAll({
+              include:[{ model: Product,attributes:["name"], through: { attributes: [] } }]
+            });
             res.send(categories);
         } catch (err) {
             console.error(err);
