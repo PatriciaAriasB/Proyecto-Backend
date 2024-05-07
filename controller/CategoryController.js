@@ -1,4 +1,4 @@
-const { Category, Sequelize } = require('../models/index');
+const { Category, Sequelize , Product } = require('../models/index');
 const { Op } = Sequelize;
 
 const CategoryController = {
