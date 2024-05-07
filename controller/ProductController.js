@@ -96,7 +96,21 @@ async getProductsByPrice(req, res) {
     res.status(500).send(error);
   }
 },
-
+async productsDescByPrice(req, res) {
+  try {
+    const products = await Product.findAll({
+      include: [
+        { model: Category, attributes: ['category'], through: { attributes: [] } },
+        { model: Review, attributes: ['content'] },
+      ],
+      order: [['price', 'DESC']],
+    });
+    res.send({ msg: `Products ordered in descending order`, products });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error);
+  }
+},
 }
   
 
