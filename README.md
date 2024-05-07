@@ -1,3 +1,9 @@
+
+
+![bd](https://github.com/PatriciaAriasB/Proyecto-Backend/assets/162701100/5d81bb8a-6a96-470e-8d44-a1df8f941c22)
+
+
+
 # Proyecto Backend: Sistema de Gestión de Productos, Categorías, Pedidos y Usuarios
 
 Este proyecto implementa un conjunto de API endpoints para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en productos, categorías, pedidos y usuarios, así como funcionalidades adicionales como filtrado, autenticación y seeder para generar datos de ejemplo.
