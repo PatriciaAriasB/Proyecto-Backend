@@ -22,7 +22,15 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    price: DataTypes.DECIMAL,
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Por favor introduce un precio",
+        },
+      },
+    },
 
   }, {
     sequelize,
