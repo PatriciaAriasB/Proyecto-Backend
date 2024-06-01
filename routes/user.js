@@ -10,7 +10,7 @@ router.post('/login',UserController.login),
 //router.delete('/:id',authentication, isAdmin, PostController.delete)
 
 
-router.get('/',authentication,UserController.getUserInfo)
+router.get('/userInfo',authentication,UserController.getUserInfo)
 // router.delete('/:id',authentication,UserController.delete)
 // router.put('/:id',authentication,UserController.update)
 
